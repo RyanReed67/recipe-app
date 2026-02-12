@@ -1,0 +1,94 @@
+#addIngredient, #addStep {
+    background: #6c757d; 
+    font-size: 12px; 
+    margin-bottom: 20px; 
+}
+
+#ingredient-section, #instruction-section { 
+    margin-top: 20px; 
+    border-top: 1px solid #ddd; 
+    padding-top: 10px; 
+}
+
+#mainSubmit { 
+    background: #007bff; 
+    margin-top: 20px; 
+}
+
+body { 
+    background: #f0f2f5; 
+    font-family: 'Segoe UI', sans-serif; 
+    padding: 40px; 
+}
+
+button { 
+    background: #1a73e8; 
+    border: none; 
+    border-radius: 8px; 
+    color: white; 
+    cursor: pointer; 
+    font-weight: bold; 
+    padding: 12px; 
+}
+
+button:hover { 
+    background: #1557b0; 
+}
+
+.card { 
+    background: #fafafa; 
+    border-left: 5px solid #1a73e8; 
+    border-radius: 4px; 
+    margin-bottom: 15px; 
+    padding: 15px; 
+}
+
+.container { 
+    background: white; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    margin: auto; 
+    max-width: 700px; 
+    padding: 30px; 
+}
+
+form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    margin-bottom: 30px; 
+}
+
+h1 { 
+    color: #1a73e8; 
+    text-align: center; 
+}
+
+.ingredient-row, .instruction-row { 
+    align-items: center;
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 5px; 
+}
+
+input, textarea { 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    font-size: 16px; 
+    padding: 12px; 
+}
+
+.remove-btn {
+    background: #dc3545;
+    font-size: 10px;
+    padding: 5px 10px;
+}
+
+.step-num {
+    background: #1a73e8;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    min-width: 25px;
+    text-align: center;
+}
