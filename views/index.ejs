@@ -22,7 +22,7 @@
                 <div id="ingredient-list">
                     <div class="ingredient-row">
                         <input type="text" class="ing-name" placeholder="Name (e.g. Flour)" required>
-                        <input type="number" class="ing-amount" placeholder="Qty" step="0.01" required>
+                        <input type="text" class="ing-amount" placeholder="Qty (e.g. 1 cup)" required>
                     </div>
                 </div>
                 <button type="button" id="addIngredient" class="btn-small">+ Add Ingredient</button>
@@ -64,36 +64,58 @@
             <button type="button" class="remove-btn">x</button>
             </div>
             `);
-        })
-        $(document).on("click", "remove-btn", function(e) {
-          e.preventDefault();
-          const ingredients = [];
-          $(".ingredient-row").each(function() {
+        });
+$(document).ready(function() {
+    $("#addIngredient").on("click", function() {
+        $("#ingredient-list").append(`
+            <div class="ingredient-row">
+                <input type="text" class="ing-name" placeholder="Name" required>
+                <input type="text" class="ing-amount" placeholder="Qty" required>
+                <button type="button" class="remove-btn">x</button>
+            </div>
+        `);
+    });
+
+    $(document).on("click", ".remove-btn", function() {
+        $(this).parent().remove();
+    });
+
+    $("#recipeForm").on("submit", function(e) {
+        e.preventDefault();
+
+        const ingredients = [];
+        $(".ingredient-row").each(function() {
             ingredients.push({
-              name: $(this).find(".ing-name").val(),
-              amount: $(this).find(".ing-amount").val()
+                name: $(this).find(".ing-name").val(),
+                amount: $(this).find(".ing-amount").val() 
             });
-          });
-          const recipeData = {
-            title: $("title").val(),
-            description: $("description").val(),
+        });
+
+        const instructions = [];
+        $(".step-text").each(function() {
+            instructions.push($(this).val());
+        });
+
+        const recipeData = {
+            title: $("#title").val(),
+            description: $("#description").val(),
             ingredients: ingredients,
             instructions: instructions
-          };
-          $.ajax({
+        };
+
+        $.ajax({
             url: "/add-recipe",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(recipeData),
             success: function(response) {
-              alert("Recipe successflly saved!");
-              location.reload();
+                alert("Recipe saved!");
+                location.reload();
             },
-            error: function(err) {
-              alert("Error saving recipe. Check the server console.");
-            }
-          });
+            error: function() { alert("Error saving recipe."); }
         });
+    });
+});
       });
     </script>
 </body>
