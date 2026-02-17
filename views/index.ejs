@@ -55,22 +55,21 @@
     </div>
 
     <script>
-      $(document).ready(function() {
-        $("#addIngredient").on("click", function() {
-          $("#ingredient-list").append(`
-          <div class="ingredient-row">
-            <input type="text" class="ing-name" placeholder="Name" required>
-            <input type="number" class="ing-amount" placeholder="Qty" step="0.01" required>
-            <button type="button" class="remove-btn">x</button>
-            </div>
-            `);
-        });
 $(document).ready(function() {
     $("#addIngredient").on("click", function() {
         $("#ingredient-list").append(`
             <div class="ingredient-row">
                 <input type="text" class="ing-name" placeholder="Name" required>
                 <input type="text" class="ing-amount" placeholder="Qty" required>
+                <button type="button" class="remove-btn">x</button>
+            </div>
+        `);
+    });
+    $("#addStep").on("click", function() {
+        const stepCount = $(".step-text").length + 1;
+        $("#instruction-list").append(`
+            <div class="instruction-row">
+                <input type="text" class="step-text" placeholder="Step ${stepCount}..." required>
                 <button type="button" class="remove-btn">x</button>
             </div>
         `);
@@ -116,7 +115,6 @@ $(document).ready(function() {
         });
     });
 });
-      });
     </script>
 </body>
 </html>
