@@ -68,7 +68,7 @@ app.get('/', async (req, res) => {
     } catch (err) {
         await client.query('ROLLBACK'); 
         console.error(err);
-        res.status(500).json({ error: "Transaction failed" });
+        res.status(500).json({ error: "Transaction failed", err });
     } finally {
         client.release();
     }
